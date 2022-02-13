@@ -1,0 +1,309 @@
+html,
+body{
+width:100%;
+overflow-x:hidden;
+}
+
+.top{
+    width: 100%;
+    height: 6rem;
+    background-color: #3A83BB;
+    /* position: sticky; */
+    display: flex;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+.topLeft{
+    flex: 3;
+    /* background-color:  tomato; */
+    display: flex;
+    /* 세로 */
+    align-items: center;
+    /* 가로 */
+    justify-content: start;
+    margin-right: 2rem;
+    color: white;
+    font-family: 'Jua', sans-serif;
+    font-size: 1.6rem;
+}
+ .topRight{
+    flex: 3;
+    /* background-color:  tomato; */
+    display: flex;
+    /* 세로 */
+    align-items: center;
+    /* 가로 */
+    justify-content: end;
+    margin-right: 2rem;
+    color: white;
+    font-family: 'Jua', sans-serif;
+    font-size: 1.6rem;
+}
+
+.topCenter{
+    flex:6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-family: 'Jua', sans-serif;
+    font-size: 2.5rem;
+    margin-right: 2.4vw;
+}
+
+.dateType{
+    width: 100%;
+    height: 2rem;
+    background-color: white;
+    /* position: sticky; */
+    display: flex;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.grayBar{
+    padding: 0px;
+    height: 0.5rem;
+    background-color: #eeeef7;
+    /* position: sticky; */
+    display: flex;
+}
+
+
+.toplist {
+    display: flex;
+    /* flex-direction: column; 수직 정렬 */
+    /* justify-content: center;
+    align-items: end; */
+    margin: 0;
+    padding: 0;
+    /* li 태그에 점 생기는것을 없앰 */
+    list-style: none;
+  }
+  
+  .topListItem {
+    margin: 0 2rem 0 ;
+    font-size: 1.2rem;
+    /* cursor: pointer; */
+    color: #9c9c9c;
+  }
+
+ .btn{
+    display: flex;
+     background-color: white;
+     text-decoration: none;
+     color: #3A83BB;
+     width: 8rem;
+     height: 4rem;
+    font-size: 1.4rem;
+     align-items: center;
+    justify-content: center;
+    border-radius: 1.6rem;
+    
+    
+ }
+
+ .btnLeft{
+    margin-left: 10rem;
+ }
+
+ .btnRight{
+    margin-right: 10rem;
+ }
+/* 
+ .btn2{
+    display: flex;
+    background-color: white;
+    text-decoration: none;
+    color: #011422;
+    width: 70px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+   border-radius: 10px;
+   margin-left: 30px;
+ } */
+
+ @media screen and (max-width:1000px){
+    .top{
+        width: 100%;
+        height: 6rem;
+        background-color: #3A83BB;
+        /* position: sticky; */
+        display: flex;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+    .topLeft{
+        flex: 1;
+        /* background-color:  tomato; */
+        display: flex;
+        /* 세로 */
+        align-items: center;
+        /* 가로 */
+        justify-content: start;
+        margin-right: 2rem;
+        color: white;
+        font-family: 'Jua', sans-serif;
+        font-size: 1.6rem;
+    }
+     .topRight{
+        flex: 1;
+        /* background-color:  tomato; */
+        display: flex;
+        /* 세로 */
+        align-items: center;
+        /* 가로 */
+        justify-content: end;
+        margin-right: 2rem;
+        color: white;
+        font-family: 'Jua', sans-serif;
+        font-size: 1.6rem;
+    }
+    .topCenter{
+        flex:10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: black;
+        font-family: 'Jua', sans-serif;
+        font-size: 2rem;
+        margin-right: 2.4vw;
+    }
+    .btnLeft{
+        margin-left: 5rem;
+     }
+    
+     .btnRight{
+        margin-right: 5rem;
+     }
+     .btn{
+        display: flex;
+         background-color: white;
+         text-decoration: none;
+         color: #3A83BB;
+         width: 5rem;
+         height: 3rem;
+        font-size: 1rem;
+         align-items: center;
+        justify-content: center;
+        border-radius: 0.8rem;
+        
+        
+     }
+}
+
+
+
+@media screen and (max-width:500px){
+    
+.top{
+    width: 100%;
+    height: 4rem;
+    background-color: #3A83BB;
+    /* position: sticky; */
+    display: flex;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+.topLeft{
+    flex: 2;
+    /* background-color:  tomato; */
+    display: flex;
+    /* 세로 */
+    align-items: center;
+    /* 가로 */
+    justify-content: end;
+    margin: 0rem;
+    color: white;
+    font-family: 'Jua', sans-serif;
+    font-size: 1.6rem;
+}
+ .topRight{
+    flex: 2;
+    /* background-color:  tomato; */
+    display: flex;
+    /* 세로 */
+    align-items: center;
+    /* 가로 */
+    justify-content: start;
+    margin-right: 0rem;
+    color: white;
+    font-family: 'Jua', sans-serif;
+    font-size: 1.6rem;
+}
+
+.topCenter{
+    flex:8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-family: 'Jua', sans-serif;
+    font-size: 1.4rem;
+    /* margin-right: 2.4vw; */
+}
+
+.dateType{
+    width: 100%;
+    height: 1rem;
+    background-color: white;
+    /* position: sticky; */
+    display: flex;
+    /* padding-top: 0.5rem; */
+    /* padding-bottom: 0.rem; */
+}
+
+.grayBar{
+    padding: 0px;
+    height: 0.8rem;
+    background-color: #eeeef7;
+    /* position: sticky; */
+    display: flex;
+}
+
+
+.toplist {
+    display: flex;
+    /* flex-direction: column; 수직 정렬 */
+    /* justify-content: center;
+    align-items: end; */
+    margin: 0;
+    padding: 0;
+    /* li 태그에 점 생기는것을 없앰 */
+    list-style: none;
+  }
+  
+  .topListItem {
+    margin: 0 0rem 0 ;
+    font-size: 0.7rem;
+    /* cursor: pointer; */
+    color: #9c9c9c;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+ .btn{
+    display: flex;
+     background-color: white;
+     text-decoration: none;
+     color: #3A83BB;
+     width: 4rem;
+     height: 2rem;
+    font-size: 0.8rem;
+     align-items: center;
+    justify-content: center;
+    border-radius: 0.8rem;
+    margin: 0px;
+    
+ }
+
+ .btnLeft{
+    /* margin-left: 10rem; */
+ }
+
+ .btnRight{
+    /* margin-right: 10rem; */
+ }
+}
