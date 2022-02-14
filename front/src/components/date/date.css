@@ -1,16 +1,350 @@
 html,
-body{
-width:100%;
-overflow-x:hidden;
+body {
+  width: 100%;
+  overflow-x: hidden;
 }
-.date{
+.date {
+  width: 100%;
+  height: 3rem;
+  background-color: white;
+  display: flex;
+}
+
+.dateLeft,
+.dateRight {
+  flex: 3;
+  /* background-color:  tomato; */
+  display: flex;
+  /* 세로 */
+  /* align-items: end; */
+  /* 가로 */
+  /* justify-content: end; */
+  /* font-family: 'Jua', sans-serif; */
+}
+
+.dayday > span:first-child {
+  padding-right: 0.7rem;
+}
+
+.dayday > span:nth-child(2) {
+  padding-right: 2vw;
+}
+
+.dateCenter {
+  flex: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Noto Sans KR", sans-serif;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.dateCenter > span:first-child {
+  padding-right: 1rem;
+}
+
+.dategrayBar {
+  padding: 0px;
+  height: 0.2rem;
+  background-color: #eeeef7;
+  /* position: sticky; */
+  display: flex;
+}
+
+.grayBarhh {
+  margin-top: 2.5rem;
+}
+
+.price {
+  width: 100%;
+  height: 12vw;
+  background-color: white;
+  display: flex;
+  padding-bottom: 5px;
+}
+
+.top3 {
+  padding-left: 7vw;
+  padding-top: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+}
+
+.priceImg {
+  padding-bottom: 0.4rem;
+  width: 7rem;
+}
+
+.set {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.priceLeft,
+.priceRight {
+  flex: 2;
+  display: flex;
+  font-family: "Jua", sans-serif;
+}
+
+.priceRight {
+  margin-right: 2.4vw;
+}
+
+.priceCenter {
+  flex: 8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.priceText {
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  display: flex;
+}
+
+.priceTextLeft,
+.priceTextRight {
+  flex: 2;
+  display: flex;
+  font-family: "Jua", sans-serif;
+}
+
+.priceTextCenter {
+  flex: 8;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.winner {
+  text-align: center;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.winnerTime {
+  text-align: center;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #e62a43;
+}
+
+.studyLeft {
+  padding-left: 7vw;
+  padding-top: 1.2rem;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.studyLeft > span:first-child {
+  padding-right: 0.3rem;
+}
+
+.studyLeft > span:nth-child(2) {
+  color: #e62a43;
+}
+
+.studyLeft > span:nth-child(3) {
+  padding-right: 0.7rem;
+}
+
+.studyLeft > span:nth-child(4) {
+  padding-right: 0.3rem;
+}
+
+.studyLeft > span:nth-child(5) {
+  color: #e62a43;
+  font-weight: 600;
+}
+
+.studyLeft2 {
+  padding-top: 0;
+}
+
+.studyStatus {
+  padding: 2rem;
+  padding-left: 12vw;
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  display: flex;
+}
+
+.studyStatusLeft {
+  flex: 0.75;
+  display: flex;
+}
+
+.studyStatusRight {
+  flex: 0.75;
+  display: flex;
+}
+
+.studyStatusCenter {
+  flex: 10.5;
+  display: flex;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.writeIcon {
+  width: 60px;
+  height: 60px;
+  font-size: 25px;
+  font-weight: 600;
+  border: 2px solid;
+  border-radius: 50%;
+  color: #3a83bb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+.targetName {
+  width: 100vw;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+}
+
+.targetName > div:first-child {
+  color: #e62a43;
+  display: flex;
+}
+.rel {
+  position: relative;
+}
+.graph2 {
+  position: absolute;
+  width: 66vw;
+  margin-top: 5px;
+  display: block;
+  background: #cbcbf8;
+  line-height: 0.5rem;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+}
+.graph {
+  position: absolute;
+  width: 1110px;
+  margin-top: 5px;
+  display: block;
+  background: #3a83bb;
+  line-height: 0.5rem;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  z-index: 999;
+}
+
+.nameTime {
+  width: 66vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nameTime > div:nth-child(2) {
+  color: #e62a43;
+}
+.trick {
+  width: 100%;
+  height: 60px;
+}
+
+.bottom {
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  /* font-family: 'Josefin Sans', sans-serif; */
+  /* z-index의 디폴트 값은 0 이다. */
+  z-index: 999;
+}
+
+.bottomLeft,
+.bottomRight {
+  flex: 3;
+  display: flex;
+}
+
+.bottomCenter {
+  flex: 6;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.bottomIcon1 {
+  padding-left: 4px;
+  color: gray;
+  cursor: pointer;
+}
+
+.bottomIcon2 {
+  padding-left: 12px;
+  color: gray;
+  cursor: pointer;
+}
+
+.bottomText {
+  font-size: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+  color: gray;
+  cursor: pointer;
+}
+
+.dada {
+  color: black;
+}
+
+.link {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .priceImg {
+    padding-bottom: 0.4rem;
+    width: 5rem;
+  }
+  .winner {
+    text-align: center;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    padding-bottom: 0.2rem;
+  }
+
+  .winnerTime {
+    text-align: center;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #e62a43;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .date {
     width: 100%;
     height: 3rem;
     background-color: white;
     display: flex;
-}
+  }
 
-.dateLeft, .dateRight{
+  .dateLeft,
+  .dateRight {
     flex: 3;
     /* background-color:  tomato; */
     display: flex;
@@ -19,212 +353,211 @@ overflow-x:hidden;
     /* 가로 */
     /* justify-content: end; */
     /* font-family: 'Jua', sans-serif; */
-}
+  }
 
-.dayday > span:first-child{
+  .dayday > span:first-child {
     padding-right: 0.7rem;
-}
+  }
 
-.dayday > span:nth-child(2){
+  .dayday > span:nth-child(2) {
     padding-right: 2vw;
-}
+  }
 
-
-.dateCenter{
-    flex:6;
+  .dateCenter {
+    flex: 6;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     color: black;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 400;
-}
+  }
 
-.dateCenter > span:first-child {
+  .dateCenter > span:first-child {
     padding-right: 1rem;
-}
+  }
 
-.dategrayBar{
+  .dategrayBar {
     padding: 0px;
     height: 0.2rem;
     background-color: #eeeef7;
     /* position: sticky; */
     display: flex;
-}
+  }
 
-.grayBarhh{
-    margin-top: 2.5rem;
-}
+  .grayBarhh {
+    margin-top: 3rem;
+  }
 
-.price{
+  .price {
     width: 100%;
-    height: 12vw;
+    height: 23vw;
     background-color: white;
     display: flex;
-    padding-bottom: 5px;
-}
+    padding-bottom: 0px;
+    padding-top: 7vh;
+  }
 
-.top3{
-    padding-left: 7vw;
+  .top3 {
+    padding-left: 2vw;
     padding-top: 20px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     font-weight: 500;
-}
+    font-size: 0.9rem;
+  }
 
-.priceImg{
-    padding-bottom: 0.4rem;
-    width: 7rem;
-}
+  .priceImg {
+    padding-bottom: 0rem;
+    width: 4rem;
+  }
 
-.set{
+  .set {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
+  }
 
-.priceLeft, .priceRight{
+  .priceLeft,
+  .priceRight {
     flex: 2;
     display: flex;
-    font-family: 'Jua', sans-serif;
-}
+    font-family: "Jua", sans-serif;
+  }
 
-.priceRight{
+  .priceRight {
     margin-right: 2.4vw;
-}
+  }
 
-.priceCenter{
-    flex:8;
+  .priceCenter {
+    flex: 8;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
+  }
 
-.priceText{
+  .priceText {
     width: 100%;
     height: 40px;
     background-color: white;
     display: flex;
-}
+  }
 
-.priceTextLeft, .priceTextRight{
+  .priceTextLeft,
+  .priceTextRight {
     flex: 2;
     display: flex;
-    font-family: 'Jua', sans-serif;
-}
+    font-family: "Jua", sans-serif;
+  }
 
-.priceTextCenter{
-    flex:8;
+  .priceTextCenter {
+    flex: 8;
     display: flex;
     align-items: flex-start;
-    justify-content:space-around;
-   
-}
+    justify-content: space-around;
+  }
 
-.winner{
+  .winner {
     text-align: center;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 500;
-    font-size: 1.2rem;
-    padding-bottom: 0.2rem;
-}
-
-.winnerTime{
-    text-align: center;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     font-weight: 500;
     font-size: 0.9rem;
-    color: #e62a43;
-}
+    padding-bottom: 0.2rem;
+  }
 
-.studyLeft{
+  .winnerTime {
+    text-align: center;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 0.7rem;
+    color: #e62a43;
+  }
+
+  .studyLeft {
     padding-left: 7vw;
     padding-top: 1.2rem;
-    font-family: 'Noto Sans KR', sans-serif;
-    
-}
+    font-family: "Noto Sans KR", sans-serif;
+  }
 
-.studyLeft > span:first-child{
+  .studyLeft > span:first-child {
     padding-right: 0.3rem;
-}
+  }
 
-.studyLeft > span:nth-child(2){
+  .studyLeft > span:nth-child(2) {
     color: #e62a43;
-}
+  }
 
-.studyLeft > span:nth-child(3){
+  .studyLeft > span:nth-child(3) {
     padding-right: 0.7rem;
-}
+  }
 
-.studyLeft > span:nth-child(4){
+  .studyLeft > span:nth-child(4) {
     padding-right: 0.3rem;
-}
+  }
 
-.studyLeft > span:nth-child(5){
+  .studyLeft > span:nth-child(5) {
     color: #e62a43;
-    font-weight: 600;
-}
+  }
 
-.studyLeft2{
+  .studyLeft2 {
     padding-top: 0;
-}
+  }
 
-.studyStatus{
+  .studyStatus {
     padding: 2rem;
-    padding-left: 12vw;
+    padding-left: 5vw;
     width: 100%;
     height: 40px;
     background-color: white;
     display: flex;
-}
+  }
 
-.studyStatusLeft{
+  .studyStatusLeft {
     flex: 0.75;
     display: flex;
-}
+  }
 
-.studyStatusRight{
+  .studyStatusRight {
     flex: 0.75;
     display: flex;
-}
+  }
 
-
-.studyStatusCenter{
-    flex:10.5;
+  .studyStatusCenter {
+    flex: 10.5;
     display: flex;
-    font-family: 'Noto Sans KR', sans-serif;
-}
+    font-family: "Noto Sans KR", sans-serif;
+  }
 
-.writeIcon {
+  .writeIcon {
     width: 60px;
     height: 60px;
     font-size: 25px;
     font-weight: 600;
     border: 2px solid;
     border-radius: 50%;
-    color: #3A83BB;
+    color: #3a83bb;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer; 
+    cursor: pointer;
     margin-right: 1rem;
   }
-.targetName{
+  .targetName {
     width: 100vw;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     font-weight: 500;
-}
+  }
 
-.targetName > div:first-child {
+  .targetName > div:first-child {
     color: #e62a43;
     display: flex;
-}
-.rel{
+  }
+  .rel {
     position: relative;
-}
-.graph2{
-    position : absolute;
+  }
+  .graph2 {
+    position: absolute;
     width: 66vw;
     margin-top: 5px;
     display: block;
@@ -233,412 +566,80 @@ overflow-x:hidden;
     border-radius: 15px;
     text-align: center;
     color: white;
-}
-.graph{
-    position : absolute;
+  }
+  .graph {
+    position: absolute;
     width: 1110px;
     margin-top: 5px;
     display: block;
-    background: #3A83BB;
+    background: #3a83bb;
     line-height: 0.5rem;
     border-radius: 15px;
     text-align: center;
     color: white;
     z-index: 999;
-}
+  }
 
-.nameTime{
+  .nameTime {
     width: 66vw;
     display: flex;
-    justify-content:space-between;
-}
+    justify-content: space-between;
+  }
 
-.nameTime > div:nth-child(2){
+  .nameTime > div:nth-child(2) {
     color: #e62a43;
-}
+  }
 
-.bottom{
+  .bottom {
     width: 100%;
     height: 60px;
     background-color: white;
-    position: sticky;
+    position: fixed;
     bottom: 0;
     display: flex;
     align-items: center;
     /* font-family: 'Josefin Sans', sans-serif; */
     /* z-index의 디폴트 값은 0 이다. */
     z-index: 999;
-}
-
-.bottomLeft, .bottomRight{
-    flex: 3;
-    display: flex;
-}
-
-.bottomCenter{
-    flex:6;
-    display: flex;
-    align-items: flex-start;
-    justify-content:space-between;
-}
-
-.bottomIcon1{
-    padding-left: 4px;
-    color: gray;
-    cursor: pointer; 
-}
-
-.bottomIcon2{
-    padding-left: 12px;
-    color: gray;
-    cursor: pointer; 
-}
-
-.bottomText{
-    font-size: 12px;
-    font-family: 'Noto Sans KR', sans-serif;
-    color: gray;
-    cursor: pointer; 
-}
-
-.dada{
-    color: black;
-}
-
-.link {
-    text-decoration: none;
   }
 
+  .bottomLeft,
+  .bottomRight {
+    flex: 1;
+    display: flex;
+  }
 
-@media screen and (max-width:1000px){
-    .priceImg{
-        padding-bottom: 0.4rem;
-        width: 5rem;
-    }
-    .winner{
-        text-align: center;
-        font-family: 'Noto Sans KR', sans-serif;
-        font-weight: 500;
-        font-size: 1rem;
-        padding-bottom: 0.2rem;
-    }
-    
-    .winnerTime{
-        text-align: center;
-        font-family: 'Noto Sans KR', sans-serif;
-        font-weight: 500;
-        font-size: 0.9rem;
-        color: #e62a43;
-    }
-}
+  .bottomCenter {
+    flex: 12;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
 
+  .bottomIcon1 {
+    padding-left: 4px;
+    color: gray;
+    cursor: pointer;
+  }
 
-@media screen and (max-width:500px){
-    .date{
-        width: 100%;
-        height: 3rem;
-        background-color: white;
-        display: flex;
-    }
-    
-    .dateLeft, .dateRight{
-        flex: 3;
-        /* background-color:  tomato; */
-        display: flex;
-        /* 세로 */
-        /* align-items: end; */
-        /* 가로 */
-        /* justify-content: end; */
-        /* font-family: 'Jua', sans-serif; */
-    }
-    
-    .dayday > span:first-child{
-        padding-right: 0.7rem;
-    }
-    
-    .dayday > span:nth-child(2){
-        padding-right: 2vw;
-    }
-    
-    
-    .dateCenter{
-        flex:6;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Noto Sans KR', sans-serif;
-        color: black;
-        font-size: 1rem;
-        font-weight: 400;
-    }
-    
-    .dateCenter > span:first-child {
-        padding-right: 1rem;
-    }
-    
-    .dategrayBar{
-        padding: 0px;
-        height: 0.2rem;
-        background-color: #eeeef7;
-        /* position: sticky; */
-        display: flex;
-    }
-    
-    .grayBarhh{
-        margin-top: 3rem;
-    }
-    
-    .price{
-        width: 100%;
-        height: 23vw;
-        background-color: white;
-        display: flex;
-        padding-bottom: 0px;
-        padding-top: 7vh;
-    }
-    
-    .top3{
-        padding-left: 2vw;
-        padding-top: 20px;
-        font-family: 'Noto Sans KR', sans-serif;
-        font-weight: 500;
-        font-size: 0.9rem;
-    }
-    
-    .priceImg{
-        padding-bottom: 0rem;
-        width: 4rem;
-    }
-    
-    .set{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-    
-    .priceLeft, .priceRight{
-        flex: 2;
-        display: flex;
-        font-family: 'Jua', sans-serif;
-    }
-    
-    .priceRight{
-        margin-right: 2.4vw;
-    }
-    
-    .priceCenter{
-        flex:8;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    
-    .priceText{
-        width: 100%;
-        height: 40px;
-        background-color: white;
-        display: flex;
-    }
-    
-    .priceTextLeft, .priceTextRight{
-        flex: 2;
-        display: flex;
-        font-family: 'Jua', sans-serif;
-    }
-    
-    .priceTextCenter{
-        flex:8;
-        display: flex;
-        align-items: flex-start;
-        justify-content:space-around;
-       
-    }
-    
-    .winner{
-        text-align: center;
-        font-family: 'Noto Sans KR', sans-serif;
-        font-weight: 500;
-        font-size: 0.9rem;
-        padding-bottom: 0.2rem;
-    }
-    
-    .winnerTime{
-        text-align: center;
-        font-family: 'Noto Sans KR', sans-serif;
-        font-weight: 500;
-        font-size: 0.7rem;
-        color: #e62a43;
-    }
-    
-    .studyLeft{
-        padding-left: 7vw;
-        padding-top: 1.2rem;
-        font-family: 'Noto Sans KR', sans-serif;
-        
-    }
-    
-    .studyLeft > span:first-child{
-        padding-right: 0.3rem;
-    }
-    
-    .studyLeft > span:nth-child(2){
-        color: #e62a43;
-    }
-    
-    .studyLeft > span:nth-child(3){
-        padding-right: 0.7rem;
-    }
-    
-    .studyLeft > span:nth-child(4){
-        padding-right: 0.3rem;
-    }
-    
-    .studyLeft > span:nth-child(5){
-        color: #e62a43;
-      
-    }
-    
-    .studyLeft2{
-        padding-top: 0;
-    }
-    
-    .studyStatus{
-        padding: 2rem;
-        padding-left: 5vw;
-        width: 100%;
-        height: 40px;
-        background-color: white;
-        display: flex;
-    }
-    
-    .studyStatusLeft{
-        flex: 0.75;
-        display: flex;
-    }
-    
-    .studyStatusRight{
-        flex: 0.75;
-        display: flex;
-    }
-    
-    
-    .studyStatusCenter{
-        flex:10.5;
-        display: flex;
-        font-family: 'Noto Sans KR', sans-serif;
-    }
-    
-    .writeIcon {
-        width: 60px;
-        height: 60px;
-        font-size: 25px;
-        font-weight: 600;
-        border: 2px solid;
-        border-radius: 50%;
-        color: #3A83BB;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer; 
-        margin-right: 1rem;
-      }
-    .targetName{
-        width: 100vw;
-        font-family: 'Noto Sans KR', sans-serif;
-        font-weight: 500;
-    }
-    
-    .targetName > div:first-child {
-        color: #e62a43;
-        display: flex;
-    }
-    .rel{
-        position: relative;
-    }
-    .graph2{
-        position : absolute;
-        width: 66vw;
-        margin-top: 5px;
-        display: block;
-        background: #cbcbf8;
-        line-height: 0.5rem;
-        border-radius: 15px;
-        text-align: center;
-        color: white;
-    }
-    .graph{
-        position : absolute;
-        width: 1110px;
-        margin-top: 5px;
-        display: block;
-        background: #3A83BB;
-        line-height: 0.5rem;
-        border-radius: 15px;
-        text-align: center;
-        color: white;
-        z-index: 999;
-    }
-    
-    .nameTime{
-        width: 66vw;
-        display: flex;
-        justify-content:space-between;
-    }
-    
-    .nameTime > div:nth-child(2){
-        color: #e62a43;
-    }
-    
-    .bottom{
-        width: 100%;
-        height: 60px;
-        background-color: white;
-        position: sticky;
-        bottom: 0;
-        display: flex;
-        align-items: center;
-        /* font-family: 'Josefin Sans', sans-serif; */
-        /* z-index의 디폴트 값은 0 이다. */
-        z-index: 999;
-    }
-    
-    .bottomLeft, .bottomRight{
-        flex: 1;
-        display: flex;
-    }
-    
-    .bottomCenter{
-        flex:12;
-        display: flex;
-        align-items: flex-start;
-        justify-content:space-between;
-    }
-    
-    .bottomIcon1{
-        padding-left: 4px;
-        color: gray;
-        cursor: pointer; 
-    }
-    
-    .bottomIcon2{
-        padding-left: 12px;
-        color: gray;
-        cursor: pointer; 
-    }
-    
-    .bottomText{
-        font-size: 12px;
-        font-family: 'Noto Sans KR', sans-serif;
-        color: gray;
-        cursor: pointer; 
-    }
-    
-    .dada{
-        color: black;
-    }
-    
-    .link {
-        text-decoration: none;
-      }
+  .bottomIcon2 {
+    padding-left: 12px;
+    color: gray;
+    cursor: pointer;
+  }
+
+  .bottomText {
+    font-size: 12px;
+    font-family: "Noto Sans KR", sans-serif;
+    color: gray;
+    cursor: pointer;
+  }
+
+  .dada {
+    color: black;
+  }
+
+  .link {
+    text-decoration: none;
+  }
 }

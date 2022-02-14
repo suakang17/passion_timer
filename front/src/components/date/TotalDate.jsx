@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import RunTime2 from "../studentTime/RunTime2";
 import { axiosInstance } from "../../config";
 import $ from "jquery";
-import { } from "jquery.cookie";
+import {} from "jquery.cookie";
 import axios from "axios";
 
 function Datedd2({ category }) {
@@ -55,24 +55,24 @@ function Datedd2({ category }) {
 
   var rankFirst = {
     name: "undefinded",
-    time: "undefinded"
-  }
+    time: "undefinded",
+  };
   var rankSecond = {
     name: "undefinded",
-    time: "undefinded"
-  }
+    time: "undefinded",
+  };
   var rankThird = {
     name: "undefinded",
-    time: "undefinded"
-  }
-  console.log("DADADA")
+    time: "undefinded",
+  };
+  console.log("DADADA");
   useEffect(() => {
     const fetchPosts = async () => {
-      console.log("DADADA")
-      const res = await axiosInstance.get("/back/time/total")
-      // const res = await axios.get("http://localhost:3000/back/time/total");
+      console.log("DADADA");
+      // const res = await axiosInstance.get("/back/time/total")
+      const res = await axios.get("http://localhost:3000/back/time/total");
       console.log(res);
-      console.log("HHH")
+      console.log("HHH");
       setPosts(res.data);
       // {data: Array(3), status: 200, statusText: 'OK', headers: {…}, config: {…}, …}
       // config: {transitional: {…}, transformRequest: Array(1), transformResponse: Array(1), timeout: 0, adapter: ƒ, …}
@@ -91,9 +91,9 @@ function Datedd2({ category }) {
   pposts = pposts.sort(function (a, b) {
     if (b.hour == a.hour) {
       if (b.minute == a.minute) {
-        return b.second - a.second
+        return b.second - a.second;
       }
-      return b.minute - a.minute
+      return b.minute - a.minute;
     }
     return b.hour - a.hour;
   });
@@ -101,8 +101,6 @@ function Datedd2({ category }) {
   // pposts.map((p) => console.log(p));
   var objectLength = Object.keys(pposts).length;
   // console.log("leng " + objectLength)
-
-
 
   // pposts.map((p, i) => {
   //     // console.log(typeof getCurrentDate())
@@ -117,47 +115,42 @@ function Datedd2({ category }) {
   // })
 
   // 자신의 현재랭킹
-  var myRank = 0
+  var myRank = 0;
   var name = $.cookie("login_cookie");
-  console.log(name)
+  console.log(name);
   if (name) {
     // consolThird("have")
     pposts.map((p, i) => {
       // console.log(p.username)
       if (i == 0 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankFirst.name = p.username
-        rankFirst.time = prize(p)
+        rankFirst.name = p.username;
+        rankFirst.time = prize(p);
       } else if (i == 1 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankSecond.name = p.username
-        rankSecond.time = prize(p)
+        rankSecond.name = p.username;
+        rankSecond.time = prize(p);
+      } else if (i == 2 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
+        rankThird.name = p.username;
+        rankThird.time = prize(p);
       }
-      else if (i == 2 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankThird.name = p.username
-        rankThird.time = prize(p)
-      }
-
 
       if (p.username === name) {
-        myRank = i + 1
+        myRank = i + 1;
       }
-    }
-    )
-  }
-  else {
+    });
+  } else {
     pposts.map((p, i) => {
       // console.log(p.username)
       if (i == 0 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankFirst.name = p.username
-        rankFirst.time = prize(p)
+        rankFirst.name = p.username;
+        rankFirst.time = prize(p);
       } else if (i == 1 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankSecond.name = p.username
-        rankSecond.time = prize(p)
+        rankSecond.name = p.username;
+        rankSecond.time = prize(p);
+      } else if (i == 2 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
+        rankThird.name = p.username;
+        rankThird.time = prize(p);
       }
-      else if (i == 2 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankThird.name = p.username
-        rankThird.time = prize(p)
-      }
-    })
+    });
   }
   // console.log(myRank)
 
@@ -222,7 +215,7 @@ function Datedd2({ category }) {
       </div>
 
       <RunTime2 data={pposts}></RunTime2>
-
+      <div className="trick"></div>
       {/* <div className="studyStatus">
         <div className="studyStatusLeft">
           <p className="writeIcon">1</p>
@@ -392,7 +385,6 @@ function Datedd2({ category }) {
       <div className="bottom">
         <div className="bottomLeft"></div>
         <div className="bottomCenter">
-
           {category === "일간" ? (
             <Link to="/" className="link">
               <i className="bottomIcon1 far fa-grin-alt dada "></i>

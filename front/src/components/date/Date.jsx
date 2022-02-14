@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import RunTime from "../studentTime/RunTime";
 import { axiosInstance } from "../../config";
 import $ from "jquery";
-import { } from "jquery.cookie";
+import {} from "jquery.cookie";
 import axios from "axios";
 
 function Datedd({ category }) {
@@ -38,7 +38,9 @@ function Datedd({ category }) {
     var minutes = date.getMinutes();
     var seconds = date.getSeconds();
     var milliseconds = date.getMilliseconds();
-    return new Date(Date.UTC(year, month, today, hours, minutes, seconds, milliseconds));
+    return new Date(
+      Date.UTC(year, month, today, hours, minutes, seconds, milliseconds)
+    );
   }
 
   console.log(category);
@@ -56,21 +58,21 @@ function Datedd({ category }) {
 
   var rankFirst = {
     name: "undefinded",
-    time: "undefinded"
-  }
+    time: "undefinded",
+  };
   var rankSecond = {
     name: "undefinded",
-    time: "undefinded"
-  }
+    time: "undefinded",
+  };
   var rankThird = {
     name: "undefinded",
-    time: "undefinded"
-  }
+    time: "undefinded",
+  };
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axiosInstance.get("/back/time/")
-      // const res = await axios.get("http://localhost:3000/back/time/");
+      // const res = await axiosInstance.get("/back/time/")
+      const res = await axios.get("http://localhost:3000/back/time/");
       console.log(res);
 
       setPosts(res.data);
@@ -96,62 +98,52 @@ function Datedd({ category }) {
   var objectLength = Object.keys(pposts).length;
   // console.log("leng " + objectLength)
 
-
-
   pposts.map((p, i) => {
     // console.log(typeof getCurrentDate())
     // console.log(JSON.stringify(getCurrentDate()))
     // console.log(new Date(p.updatedAt).getTime() + (9 * 3600000))
-    if (
-      new Date(p.updatedAt).toDateString() !=
-      new Date().toDateString()
-    ) {
-      p.time = 0
+    if (new Date(p.updatedAt).toDateString() != new Date().toDateString()) {
+      p.time = 0;
     }
-  })
+  });
 
   // 자신의 현재랭킹
-  var myRank = 0
+  var myRank = 0;
   var name = $.cookie("login_cookie");
-  console.log(name)
+  console.log(name);
   if (name) {
     // consolThird("have")
     pposts.map((p, i) => {
       // console.log(p.username)
       if (i == 0 && p.time != 0) {
-        rankFirst.name = p.username
-        rankFirst.time = prize(p.time)
+        rankFirst.name = p.username;
+        rankFirst.time = prize(p.time);
       } else if (i == 1 && p.time != 0) {
-        rankSecond.name = p.username
-        rankSecond.time = prize(p.time)
+        rankSecond.name = p.username;
+        rankSecond.time = prize(p.time);
+      } else if (i == 2 && p.time != 0) {
+        rankThird.name = p.username;
+        rankThird.time = prize(p.time);
       }
-      else if (i == 2 && p.time != 0) {
-        rankThird.name = p.username
-        rankThird.time = prize(p.time)
-      }
-
 
       if (p.username === name) {
-        myRank = i + 1
+        myRank = i + 1;
       }
-    }
-    )
-  }
-  else {
+    });
+  } else {
     pposts.map((p, i) => {
       // console.log(p.username)
       if (i == 0 && p.time != 0) {
-        rankFirst.name = p.username
-        rankFirst.time = prize(p.time)
+        rankFirst.name = p.username;
+        rankFirst.time = prize(p.time);
       } else if (i == 1 && p.time != 0) {
-        rankSecond.name = p.username
-        rankSecond.time = prize(p.time)
+        rankSecond.name = p.username;
+        rankSecond.time = prize(p.time);
+      } else if (i == 2 && p.time != 0) {
+        rankThird.name = p.username;
+        rankThird.time = prize(p.time);
       }
-      else if (i == 2 && p.time != 0) {
-        rankThird.name = p.username
-        rankThird.time = prize(p.time)
-      }
-    })
+    });
   }
   // console.log(myRank)
 
@@ -164,7 +156,6 @@ function Datedd({ category }) {
             <span>{month}월</span>
             <span>{day}일</span>
           </div>
-
         </div>
         <div className="dateRight"></div>
       </div>
@@ -217,7 +208,7 @@ function Datedd({ category }) {
       </div>
 
       <RunTime data={pposts}></RunTime>
-
+      <div className="trick"></div>
       {/* <div className="studyStatus">
         <div className="studyStatusLeft">
           <p className="writeIcon">1</p>
@@ -387,7 +378,6 @@ function Datedd({ category }) {
       <div className="bottom">
         <div className="bottomLeft"></div>
         <div className="bottomCenter">
-
           {category === "일간" ? (
             <Link to="/" className="link">
               <i className="bottomIcon1 far fa-grin-alt dada "></i>
