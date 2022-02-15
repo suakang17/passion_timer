@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import RunTime from "../studentTime/RunTime";
 import { axiosInstance } from "../../config";
 import $ from "jquery";
-import { } from "jquery.cookie";
+import {} from "jquery.cookie";
 import axios from "axios";
 
 function Datedd({ category }) {
@@ -71,10 +71,10 @@ function Datedd({ category }) {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axiosInstance.get("/back/time/")
-      // const res = await axios.get("http://localhost:3000/back/time/");
+      // const res = await axiosInstance.get("/back/time/")
+      const res = await axios.get("http://localhost:3000/back/time/");
       console.log(res);
-      console.log(res.data)
+      console.log(res.data);
       setPosts(res.data);
       // {data: Array(3), status: 200, statusText: 'OK', headers: {…}, config: {…}, …}
       // config: {transitional: {…}, transformRequest: Array(1), transformResponse: Array(1), timeout: 0, adapter: ƒ, …}
@@ -90,13 +90,6 @@ function Datedd({ category }) {
 
   // console.log(posts);
   let pposts = posts;
-  pposts = pposts.sort(function (a, b) {
-    return b.time - a.time;
-  });
-  // console.log(pposts);
-  // pposts.map((p) => console.log(p));
-  var objectLength = Object.keys(pposts).length;
-  // console.log("leng " + objectLength)
 
   pposts.map((p, i) => {
     // console.log(typeof getCurrentDate())
@@ -106,6 +99,14 @@ function Datedd({ category }) {
       p.time = 0;
     }
   });
+
+  pposts = pposts.sort(function (a, b) {
+    return b.time - a.time;
+  });
+  // console.log(pposts);
+  // pposts.map((p) => console.log(p));
+  var objectLength = Object.keys(pposts).length;
+  // console.log("leng " + objectLength)
 
   // 자신의 현재랭킹
   var myRank = 0;

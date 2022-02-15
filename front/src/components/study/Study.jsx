@@ -5,10 +5,10 @@ import * as tf from "@tensorflow/tfjs";
 import * as tmImage from "@teachablemachine/image";
 import "./study.css";
 import $ from "jquery";
-import { } from "jquery.cookie";
+import {} from "jquery.cookie";
 import { axiosInstance } from "../../config";
 var top = 0;
-
+var bottom = 0;
 function getCurrentDate() {
   var date = new Date();
   var year = date.getFullYear();
@@ -83,6 +83,7 @@ function Study() {
       setweekId(res2.data[0]._id);
       settotalId(res3.data[0]._id);
       total_studied = res.data[0].time;
+      bottom = res.data[0].time;
       console.log(new Date());
       console.log(current);
       // console.log(getCurrentDate() - new Date())
@@ -135,38 +136,48 @@ function Study() {
     if (current.toDateString() === new Date().toDateString()) {
       try {
         console.log("submit1");
-        var hour = Math.floor((top % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minute = Math.floor((top % (1000 * 60 * 60)) / (1000 * 60));
-        var second = Math.floor((top % (1000 * 60)) / 1000);
+        var hour = Math.floor(
+          ((top - bottom) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minute = Math.floor(
+          ((top - bottom) % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        var second = Math.floor(((top - bottom) % (1000 * 60)) / 1000);
+        console.log(hour);
+        console.log(minute);
+        console.log(second);
+
         // const res = await axiosInstance.put("/back/time/submit", {
         const res1 = await axios.put("http://localhost:3000/back/time/submit", {
           username: name,
           id: id,
           time: top,
         });
-        const res2 = await axiosInstance.put("/back/time/submit2", {
-          // const res2 = await axios.put("http://localhost:3000/back/time/submit2",{
-          username: name,
-          id: weekid,
-          hour: hour,
-          minute: minute,
-          second: second,
-        }
+        // const res2 = await axiosInstance.put("/back/time/submit2", {
+        const res2 = await axios.put(
+          "http://localhost:3000/back/time/submit2",
+          {
+            username: name,
+            id: weekid,
+            hour: hour,
+            minute: minute,
+            second: second,
+          }
         );
-        const res3 = await axiosInstance.put("/back/time/submit3", {
-          // const res3 = await axios.put(
-          //   "http://localhost:3000/back/time/submit3",
-          //   {
-          username: name,
-          id: totalid,
-          hour: hour,
-          minute: minute,
-          second: second,
-        }
+        // const res3 = await axiosInstance.put("/back/time/submit3", {
+        const res3 = await axios.put(
+          "http://localhost:3000/back/time/submit3",
+          {
+            username: name,
+            id: totalid,
+            hour: hour,
+            minute: minute,
+            second: second,
+          }
         );
         //   console.log(res);
         window.location.href = "/";
-      } catch (err) { }
+      } catch (err) {}
     } else {
       try {
         console.log("submit2");
@@ -175,39 +186,39 @@ function Study() {
         );
         var minute = Math.floor((before12 % (1000 * 60 * 60)) / (1000 * 60));
         var second = Math.floor((before12 % (1000 * 60)) / 1000);
-        const res = await axiosInstance.put("/back/time/submit", {
-          // const res = await axios.put("http://localhost:3000/back/time/submit", {
+        // const res = await axiosInstance.put("/back/time/submit", {
+        const res = await axios.put("http://localhost:3000/back/time/submit", {
           username: name,
           id: id,
           time: after12,
         });
         //   console.log(res);
         // window.location.href = "/";
-        const res2 = await axiosInstance.put("/back/time/submit2", {
-          // const res2 = await axios.put(
-          //   "http://localhost:3000/back/time/submit2",
-          //   {
-          username: name,
-          id: weekid,
-          hour: hour,
-          minute: minute,
-          second: second,
-        }
+        // const res2 = await axiosInstance.put("/back/time/submit2", {
+        const res2 = await axios.put(
+          "http://localhost:3000/back/time/submit2",
+          {
+            username: name,
+            id: weekid,
+            hour: hour,
+            minute: minute,
+            second: second,
+          }
         );
 
-        const res3 = await axiosInstance.put("/back/time/submit3", {
-          // const res3 = await axios.put(
-          //   "http://localhost:3000/back/time/submit3",
-          //   {
-          username: name,
-          id: totalid,
-          hour: hour,
-          minute: minute,
-          second: second,
-        }
+        // const res3 = await axiosInstance.put("/back/time/submit3", {
+        const res3 = await axios.put(
+          "http://localhost:3000/back/time/submit3",
+          {
+            username: name,
+            id: totalid,
+            hour: hour,
+            minute: minute,
+            second: second,
+          }
         );
         window.location.href = "/";
-      } catch (err) { }
+      } catch (err) {}
     }
   }
 
