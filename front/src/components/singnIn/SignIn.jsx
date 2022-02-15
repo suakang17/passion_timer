@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import { axiosInstance } from "../../config";
 import $ from "jquery";
-import {} from "jquery.cookie";
+import { } from "jquery.cookie";
 
 function SignIn() {
   const history = useHistory(); //페이지가 이동 되어서 useState 값을 저장하기 위해서 사용
@@ -43,8 +43,8 @@ function SignIn() {
     e.preventDefault();
     setError(false);
     try {
-      // const res = await axiosInstance.post("/back/auth/register", {
-      const res = await axios.post("http://localhost:3000/back/auth/register", {
+      const res = await axiosInstance.post("/back/auth/register", {
+        // const res = await axios.post("http://localhost:3000/back/auth/register", {
         username,
         email,
         password,
@@ -78,8 +78,8 @@ function SignIn() {
   const onSumbit2 = async (e) => {
     e.preventDefault();
     try {
-      // const res = await axios.post("/back/auth/login", {
-      const res = await axios.post("http://localhost:3000/back/auth/login", {
+      const res = await axios.post("/back/auth/login", {
+        // const res = await axios.post("http://localhost:3000/back/auth/login", {
         username,
         password,
       });
@@ -90,7 +90,7 @@ function SignIn() {
         console.log($.cookie("login_cookie"));
         window.location.href = "/";
       }
-    } catch (err) {}
+    } catch (err) { }
 
     // const user = {
     //     headers,

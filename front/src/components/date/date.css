@@ -235,7 +235,7 @@ body {
 }
 .graph {
   position: absolute;
-  width: 1110px;
+  width: 66vw;
   margin-top: 5px;
   display: block;
   background: #3a83bb;

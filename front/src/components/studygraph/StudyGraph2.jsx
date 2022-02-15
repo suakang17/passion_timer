@@ -9,8 +9,11 @@ function StudyGraph({ first_value, pp }) {
     var kitty = parseInt(wid / 100)
     var maxOnePercent = max / 100
     // var a = 13412
-    // console.log(kitty)
-    // console.log(maxOnePercent)
+    // console.log("max" + max)
+    // console.log("now" + now)
+    // console.log("wid" + wid)
+    // console.log("kitty" + kitty)
+    console.log(maxOnePercent)
     // console.log(parseInt(a / maxOnePercent))
     let go = 0
     if (max == now) {

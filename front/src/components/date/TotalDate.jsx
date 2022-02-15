@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import RunTime2 from "../studentTime/RunTime2";
 import { axiosInstance } from "../../config";
 import $ from "jquery";
-import {} from "jquery.cookie";
+import { } from "jquery.cookie";
 import axios from "axios";
 
 function Datedd2({ category }) {
@@ -69,8 +69,8 @@ function Datedd2({ category }) {
   useEffect(() => {
     const fetchPosts = async () => {
       console.log("DADADA");
-      // const res = await axiosInstance.get("/back/time/total")
-      const res = await axios.get("http://localhost:3000/back/time/total");
+      const res = await axiosInstance.get("/back/time/total")
+      // const res = await axios.get("http://localhost:3000/back/time/total");
       console.log(res);
       console.log("HHH");
       setPosts(res.data);

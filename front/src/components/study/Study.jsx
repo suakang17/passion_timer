@@ -5,7 +5,7 @@ import * as tf from "@tensorflow/tfjs";
 import * as tmImage from "@teachablemachine/image";
 import "./study.css";
 import $ from "jquery";
-import {} from "jquery.cookie";
+import { } from "jquery.cookie";
 import { axiosInstance } from "../../config";
 var top = 0;
 
@@ -144,31 +144,29 @@ function Study() {
           id: id,
           time: top,
         });
-        // const res2 = await axiosInstance.put("/back/time/submit2", {
-        const res2 = await axios.put(
-          "http://localhost:3000/back/time/submit2",
-          {
-            username: name,
-            id: weekid,
-            hour: hour,
-            minute: minute,
-            second: second,
-          }
+        const res2 = await axiosInstance.put("/back/time/submit2", {
+          // const res2 = await axios.put("http://localhost:3000/back/time/submit2",{
+          username: name,
+          id: weekid,
+          hour: hour,
+          minute: minute,
+          second: second,
+        }
         );
-        // const res3 = await axiosInstance.put("/back/time/submit3", {
-        const res3 = await axios.put(
-          "http://localhost:3000/back/time/submit3",
-          {
-            username: name,
-            id: totalid,
-            hour: hour,
-            minute: minute,
-            second: second,
-          }
+        const res3 = await axiosInstance.put("/back/time/submit3", {
+          // const res3 = await axios.put(
+          //   "http://localhost:3000/back/time/submit3",
+          //   {
+          username: name,
+          id: totalid,
+          hour: hour,
+          minute: minute,
+          second: second,
+        }
         );
         //   console.log(res);
         window.location.href = "/";
-      } catch (err) {}
+      } catch (err) { }
     } else {
       try {
         console.log("submit2");
@@ -177,39 +175,39 @@ function Study() {
         );
         var minute = Math.floor((before12 % (1000 * 60 * 60)) / (1000 * 60));
         var second = Math.floor((before12 % (1000 * 60)) / 1000);
-        // const res = await axiosInstance.put("/back/time/submit", {
-        const res = await axios.put("http://localhost:3000/back/time/submit", {
+        const res = await axiosInstance.put("/back/time/submit", {
+          // const res = await axios.put("http://localhost:3000/back/time/submit", {
           username: name,
           id: id,
           time: after12,
         });
         //   console.log(res);
         // window.location.href = "/";
-        // const res2 = await axiosInstance.put("/back/time/submit2", {
-        const res2 = await axios.put(
-          "http://localhost:3000/back/time/submit2",
-          {
-            username: name,
-            id: weekid,
-            hour: hour,
-            minute: minute,
-            second: second,
-          }
+        const res2 = await axiosInstance.put("/back/time/submit2", {
+          // const res2 = await axios.put(
+          //   "http://localhost:3000/back/time/submit2",
+          //   {
+          username: name,
+          id: weekid,
+          hour: hour,
+          minute: minute,
+          second: second,
+        }
         );
 
-        // const res3 = await axiosInstance.put("/back/time/submit3", {
-        const res3 = await axios.put(
-          "http://localhost:3000/back/time/submit3",
-          {
-            username: name,
-            id: totalid,
-            hour: hour,
-            minute: minute,
-            second: second,
-          }
+        const res3 = await axiosInstance.put("/back/time/submit3", {
+          // const res3 = await axios.put(
+          //   "http://localhost:3000/back/time/submit3",
+          //   {
+          username: name,
+          id: totalid,
+          hour: hour,
+          minute: minute,
+          second: second,
+        }
         );
         window.location.href = "/";
-      } catch (err) {}
+      } catch (err) { }
     }
   }
 
