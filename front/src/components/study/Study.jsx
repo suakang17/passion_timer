@@ -22,7 +22,11 @@ function getCurrentDate() {
 }
 var deadline = getCurrentDate();
 var current = new Date();
+console.log("2");
+// 윗부분은 한번만 실행이 된다.
+// fuction Study()는 여러번 실행 된다.
 function Study() {
+  console.log("1");
   // More API functions here:
   // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
@@ -47,6 +51,7 @@ function Study() {
   const [id, setId] = useState("");
   const [weekid, setweekId] = useState("");
   const [totalid, settotalId] = useState("");
+  const [monthid, setMonthId] = useState("");
   var go = 0;
   //   console.log("plztime" + total_studied);
   // const { search } = useLocation();
@@ -78,11 +83,18 @@ function Study() {
         username: name,
       });
       console.log(res3);
+
+      // const res4 = await axiosInstance.post("/back/time/month", {
+      const res4 = await axios.post("http://localhost:3000/back/time/month", {
+        username: name,
+      });
+      console.log(res4);
       // console.log(res)
       // console.log(res.data[0].time);
       setId(res.data[0]._id);
       setweekId(res2.data[0]._id);
       settotalId(res3.data[0]._id);
+      setMonthId(res4.data[0]._id);
       total_studied = res.data[0].time;
       bottom = res.data[0].time;
       console.log(new Date());
@@ -93,14 +105,17 @@ function Study() {
       // console.log(new Date(res.data[0].updatedAt).toDateString());
       // console.log(new Date().toDateString());
       // console.log(getCurrentDate().toDateString());
+      var KR_TIME_DIFF = 9 * 60 * 60 * 1000;
+      var a = new Date();
       if (
         new Date(res.data[0].updatedAt).toDateString() ===
-        new Date().toDateString()
+        new Date(a.getTime() - KR_TIME_DIFF).toDateString()
       ) {
         // console.log("DDDADADA")
         setTime(res.data[0].time);
       } else {
         setTime(0);
+        bottom = 0;
       }
       //   console.log("plz" + total_studied);
       //   console.log(time);
@@ -115,6 +130,14 @@ function Study() {
       // statusText: "OK"
       // [[Prototype]]: Object
       setFinish(true);
+      console.log(finish);
+      if (
+        new Date() >= new Date("02/20/2022 23:59:00") &&
+        new Date() < new Date("02/21/2022 00:01:00")
+      ) {
+        // const res = await axiosInstance.put("/back/time/submit", {
+        const res = await axios.post("http://localhost:3000/back/time/reset");
+      }
     };
     fetchPosts();
   }, []);
@@ -138,6 +161,8 @@ function Study() {
     if (current.toDateString() === new Date().toDateString()) {
       try {
         console.log("submit1");
+        console.log(top);
+        console.log(bottom);
         var hour = Math.floor(
           ((top - bottom) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
         );
@@ -177,6 +202,18 @@ function Study() {
             second: second,
           }
         );
+
+        // const res4 = await axiosInstance.put("/back/time/submit4", {
+        const res4 = await axios.put(
+          "http://localhost:3000/back/time/submit4",
+          {
+            username: name,
+            id: monthid,
+            hour: hour,
+            minute: minute,
+            second: second,
+          }
+        );
         //   console.log(res);
         window.location.href = "/";
       } catch (err) {}
@@ -184,10 +221,12 @@ function Study() {
       try {
         console.log("submit2");
         var hour = Math.floor(
-          (before12 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          ((top - bottom) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
         );
-        var minute = Math.floor((before12 % (1000 * 60 * 60)) / (1000 * 60));
-        var second = Math.floor((before12 % (1000 * 60)) / 1000);
+        var minute = Math.floor(
+          ((top - bottom) % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        var second = Math.floor(((top - bottom) % (1000 * 60)) / 1000);
         // const res = await axiosInstance.put("/back/time/submit", {
         const res = await axios.put("http://localhost:3000/back/time/submit", {
           username: name,
@@ -214,6 +253,18 @@ function Study() {
           {
             username: name,
             id: totalid,
+            hour: hour,
+            minute: minute,
+            second: second,
+          }
+        );
+
+        // const res4 = await axiosInstance.put("/back/time/submit4", {
+        const res4 = await axios.put(
+          "http://localhost:3000/back/time/submit4",
+          {
+            username: name,
+            id: monthid,
             hour: hour,
             minute: minute,
             second: second,

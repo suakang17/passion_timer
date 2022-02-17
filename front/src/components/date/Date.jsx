@@ -84,6 +84,14 @@ function Datedd({ category }) {
       // status: 200
       // statusText: "OK"
       // [[Prototype]]: Object
+
+      if (
+        new Date() >= new Date("02/20/2022 23:59:00") &&
+        new Date() < new Date("02/21/2022 00:01:00")
+      ) {
+        // const res = await axiosInstance.put("/back/time/submit", {
+        const res = await axios.post("http://localhost:3000/back/time/reset");
+      }
     };
     fetchPosts();
   }, []);

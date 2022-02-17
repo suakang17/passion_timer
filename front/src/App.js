@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignIn from "./components/singnIn/SignIn";
 import Study from "./components/study/Study";
 import TopBarStudy from "./components/topBarStudy/TopBarStudy";
-import TotalDate from "./components/date/TotalDate"
-
+import TotalDate from "./components/date/TotalDate";
+import WeekDate from "./components/date/WeekDate";
+import MonthDate from "./components/date/MonthDate";
 function App() {
-
   return (
     <Router>
       <Switch>
@@ -17,11 +17,11 @@ function App() {
         </Route>
         <Route path="/su">
           <TopBar category={"주간"}></TopBar>
-          <Date category={"주간"}></Date>
+          <WeekDate category={"주간"}></WeekDate>
         </Route>
         <Route path="/gong">
           <TopBar category={"월간"}></TopBar>
-          <Date category={"월간"}></Date>
+          <MonthDate category={"월간"}></MonthDate>
         </Route>
         <Route path="/ja">
           <TopBar category={"누적"}></TopBar>
@@ -40,7 +40,6 @@ function App() {
         </Route>
       </Switch>
     </Router>
-
   );
 }
 

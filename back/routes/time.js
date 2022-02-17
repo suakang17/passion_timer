@@ -3,6 +3,7 @@ const User = require("../models/User");
 const Time = require("../models/Time");
 const WeekTime = require("../models/WeekTime");
 const TotalTime = require("../models/TotalTime");
+const MonthTime = require("../models/MonthTime");
 const bcrypt = require("bcrypt");
 
 function getCurrentDate() {
@@ -23,12 +24,30 @@ router.post("/", async (req, res) => {
   var username = req.body.username;
   // console.log(req.body);
   // console.log("plz");
+
   try {
     var time;
     if (username) {
       time = await Time.find({ username });
     }
     res.status(200).json(time);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/reset", async (req, res) => {
+  var username = req.body.username;
+  // console.log(req.body);
+  // console.log("plz");
+  try {
+    var tt;
+    tt = await WeekTime.updateMany(
+      {},
+      { $set: { hour: 0, minute: 0, second: 0 } }
+    );
+    console.log(tt);
+    res.status(200).json(tt);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -59,6 +78,21 @@ router.post("/total", async (req, res) => {
       totaltime = await TotalTime.find({ username });
     }
     res.status(200).json(totaltime);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/month", async (req, res) => {
+  var username = req.body.username;
+  // console.log(req.body);
+  // console.log("total");
+  try {
+    var totaltime;
+    if (username) {
+      monthtime = await MonthTime.find({ username });
+    }
+    res.status(200).json(monthtime);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -192,6 +226,60 @@ router.put("/submit3", async (req, res) => {
   }
 });
 
+router.put("/submit4", async (req, res) => {
+  try {
+    console.log(req.body.hours);
+    console.log(req.body.minute);
+    console.log(req.body.second);
+
+    // console.log("total" + req.body.id);
+    // console.log("total" + req.body.second);
+    // console.log(getCurrentDate())
+    // console.log(new Date())
+    const totaltime = await MonthTime.findById(req.body.id);
+    console.log(
+      `totaltime.second: ${totaltime.second} req.body.second: ${req.body.second}`
+    );
+    if (totaltime.username === req.body.username) {
+      try {
+        goodH = totaltime.hour + req.body.hour;
+        goodM = totaltime.minute + req.body.minute;
+        goodS = totaltime.second + req.body.second;
+
+        if (goodM >= 60) {
+          let a = parseInt(goodM / 60);
+          goodH += a;
+          goodM -= a * 60;
+        }
+
+        if (goodS >= 60) {
+          let a = parseInt(goodS / 60);
+          goodM += a;
+          goodS -= a * 60;
+        }
+        const updatedtotalTime = await MonthTime.findByIdAndUpdate(
+          req.body.id,
+          {
+            $set: {
+              hour: goodH,
+              minute: goodM,
+              second: goodS,
+            },
+          },
+          { new: true }
+        );
+        res.status(200).json(updatedtotalTime);
+      } catch (err) {
+        res.status(500).json(err);
+      }
+    } else {
+      res.status(401).json("You can update only your post!");
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get("/", async (req, res) => {
   try {
     // console.log("www");
@@ -214,4 +302,25 @@ router.get("/total", async (req, res) => {
   }
 });
 
+router.get("/week", async (req, res) => {
+  try {
+    // console.log("DADADADAVVVV");
+    let posts;
+    posts = await WeekTime.find();
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/month", async (req, res) => {
+  try {
+    // console.log("DADADADAVVVV");
+    let posts;
+    posts = await MonthTime.find();
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;

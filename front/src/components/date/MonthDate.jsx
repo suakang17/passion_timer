@@ -11,7 +11,7 @@ import $ from "jquery";
 import {} from "jquery.cookie";
 import axios from "axios";
 
-function Datedd2({ category }) {
+function Datedd4({ category }) {
   function prize(p) {
     let hours = p.hour;
     let minutes = p.minute;
@@ -70,7 +70,7 @@ function Datedd2({ category }) {
     const fetchPosts = async () => {
       console.log("DADADA");
       // const res = await axiosInstance.get("/back/time/total")
-      const res = await axios.get("http://localhost:3000/back/time/total");
+      const res = await axios.get("http://localhost:3000/back/time/month");
       console.log(res);
       console.log("HHH");
       setPosts(res.data);
@@ -174,7 +174,7 @@ function Datedd2({ category }) {
         <div className="dateRight"></div>
       </div>
       <div className="dategrayBar"></div>
-      <div className="top3">누적 Top3</div>
+      <div className="top3">월간 Top3</div>
       <div className="price">
         <div className="priceLeft"></div>
         <div className="priceCenter">
@@ -457,4 +457,4 @@ function Datedd2({ category }) {
   );
 }
 
-export default Datedd2;
+export default Datedd4;

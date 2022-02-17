@@ -4,6 +4,7 @@ const Time = require("../models/Time");
 const bcrypt = require("bcrypt");
 const WeekTime = require("../models/WeekTime");
 const TotalTime = require("../models/TotalTime");
+const MonthTime = require("../models/MonthTime");
 //REGISTER
 // async를 사용하면 try catch문을 사용해야한다.
 router.post("/register", async (req, res) => {
@@ -31,11 +32,15 @@ router.post("/register", async (req, res) => {
     const newTotalTime = new TotalTime({
       username: req.body.username,
     });
+    const newMonthTime = new MonthTime({
+      username: req.body.username,
+    });
     const user = await newUser.save();
     await newTime.save();
     await newWeekTime.save();
     await newTotalTime.save();
-    res.status(200).json(user);
+    await newMonthTime.save();
+    await res.status(200).json(user);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
