@@ -1,0 +1,228 @@
+.deep{
+    height: 500px;
+}
+
+.main {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    width: 400px;
+    height: 330px;
+    margin: 5em auto;
+    border-radius: 1.5em;
+    box-shadow: 11px 11px 100px 2px rgba(42, 100, 207, 0.9);
+}
+
+.sign {
+    padding-top: 40px;
+    color: #3A83BB;
+    font-family: 'Jua', sans-serif;
+    font-weight: bold;
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.un {
+    display: flex;
+    justify-content: center;
+     width: 76%;
+    color: rgb(38, 50, 56);
+    background: rgb(197, 195, 195,0.2);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    /* margin-bottom: 50px; */
+    /* margin-left: 46px; */
+    text-align: center;
+    /* margin-bottom: 27px; */
+    font-family: "Noto Sans KR", sans-serif;
+    }
+
+.submit {
+        cursor: pointer;
+        border-radius: 1.2em;
+        color: #fff;
+        width: 80px;
+        height: 40px;
+        background:  #1373bd;
+        /* background: linear-gradient(to right, #1373bd, #4289be); */
+        border: 0;
+        /* font-weight: bold; */
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 13px;
+        margin-top: 30px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+@media screen and (max-width: 500px) {
+    .main {
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        background-color: #FFFFFF;
+        width: 270px;
+        height: 330px;
+        margin: 5em auto;
+        border-radius: 1.5em;
+        box-shadow: 11px 11px 100px 2px rgba(42, 100, 207, 0.9);
+    }
+}
+
+/* #goal-input {
+    display: block;
+    width: 340px;
+    border: none;
+    padding: 0;
+    margin: 5px;
+    font-size: 20px;
+    color: #212529;
+    background-color: transparent;
+    text-align: center;
+    
+    
+}
+
+#userinfo-ul {
+    list-style: none;
+    position: absolute;
+    top: 200px;
+    left: 800px;
+}
+
+input {
+    -webkit-appearance: none;
+    border: solid 1px #CED4DA;
+    padding: 1rem 1.4rem;
+    margin: 1.6rem 0;
+    font-size:25px;
+    border-radius: 3px;
+    text-align: center;
+    
+}
+
+input {
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+.user-info-wrap {
+    display: flex;
+    justify-content: space-between;
+    height: 42px;
+    width: 500px;
+    
+}
+
+#contents {
+    position: relative;
+    font-family: "Noto Sans KR", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+
+
+#img-area {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 150px;
+    left: 580px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #CED4DA;
+    
+}
+
+#mypage {
+    width: 100%;
+    height: 100vh;
+}
+
+.myprofile {
+    margin-top: 5rem;
+}
+
+button {
+    margin: 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+    border-radius: 6px;
+    box-sizing: border-box;
+    border: 1px solid #CED4DA;
+    color: #212529;
+    text-align: center;
+    font-weight: 600;
+    background-color: #fff;
+    margin-top: 0.5rem;
+    text-decoration: none;
+}
+
+.goal {
+    white-space: nowrap;
+    display: flex;
+    height: 70px;
+}
+
+.thing{
+    margin-top: 1rem;
+}
+
+.footer-area {
+    margin: 0;
+    padding: 15vh 15vw 7vh 15vw;
+    object-fit: contain;
+    background-color: #dddada;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+   }
+
+.Copyrights-reserved-by- {
+    object-fit: contain;
+    font-family: AppleSDGothicNeo;
+    font-size: 20px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #9d9d9d;
+    white-space: nowrap;
+   }
+
+a {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #9d9d9d;
+    white-space: nowrap;
+   }
+
+
+.copyrights {
+    position: absolute;
+    left: 750px;
+    bottom: 20px;
+   padding: 0;
+} */
