@@ -17,23 +17,37 @@ router.post("/register", async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPass = await bcrypt.hash(req.body.password, salt);
 
+    if (req.body.motto == "") {
+      mot = "열심히 하겠습니다.";
+    } else {
+      mot = req.body.motto;
+    }
     const newUser = new User({
       username: req.body.username,
-      email: req.body.email,
+      nickname: req.body.nickname,
       password: hashedPass,
+      motto: mot,
     });
 
     const newTime = new Time({
       username: req.body.username,
+      nickname: req.body.nickname,
+      motto: mot,
     });
     const newWeekTime = new WeekTime({
       username: req.body.username,
+      nickname: req.body.nickname,
+      motto: mot,
     });
     const newTotalTime = new TotalTime({
       username: req.body.username,
+      nickname: req.body.nickname,
+      motto: mot,
     });
     const newMonthTime = new MonthTime({
       username: req.body.username,
+      nickname: req.body.nickname,
+      motto: mot,
     });
     const user = await newUser.save();
     await newTime.save();

@@ -17,7 +17,8 @@ function SignIn() {
   });
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [motto, setMotto] = useState("");
   const [error, setError] = useState(false);
 
   //변환이 일어날 때 useState 값 변환
@@ -35,8 +36,12 @@ function SignIn() {
     setPassword(e.target.value);
   };
 
-  const onChangeEmail = (e) => {
-    setEmail(e.target.value);
+  const onChangeNickname = (e) => {
+    setNickname(e.target.value);
+  };
+
+  const onChangeMotto = (e) => {
+    setMotto(e.target.value);
   };
 
   const onSubmit1 = async (e) => {
@@ -46,8 +51,9 @@ function SignIn() {
       // const res = await axiosInstance.post("/back/auth/register", {
       const res = await axios.post("http://localhost:3000/back/auth/register", {
         username,
-        email,
+        nickname,
         password,
+        motto,
       });
       alert("회원가입이 완료되었습니다.");
       if (res.data) {
@@ -55,7 +61,7 @@ function SignIn() {
       }
       // res.data && window.location.replace("/login")
     } catch (err) {
-      alert("중복되는 아이디입니다.");
+      alert("이미 존재하는 아이디 또는 닉네임 입니다.");
       setError(true);
     }
     // const user = {
@@ -132,8 +138,13 @@ function SignIn() {
           />
           <input
             type="text"
-            onChange={onChangeEmail}
-            placeholder="email address"
+            onChange={onChangeNickname}
+            placeholder="닉네임을 입력해주세요."
+          />
+          <input
+            type="text"
+            onChange={onChangeMotto}
+            placeholder="좌우명을 입력해주세요."
           />
           <button type="submit">Create User</button>
           <p className={signins.message}>

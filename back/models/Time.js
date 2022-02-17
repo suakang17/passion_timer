@@ -20,6 +20,15 @@ const Schema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    nickname: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    motto: {
+      type: String,
+      default: "열심히 하겠습니다",
+    },
     time: {
       type: Number,
       default: 0,

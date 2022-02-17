@@ -128,15 +128,15 @@ function Datedd4({ category }) {
   if (name) {
     // consolThird("have")
     pposts.map((p, i) => {
-      // console.log(p.username)
+      console.log(p);
       if (i == 0 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankFirst.name = p.username;
+        rankFirst.name = p.nickname;
         rankFirst.time = prize(p);
       } else if (i == 1 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankSecond.name = p.username;
+        rankSecond.name = p.nickname;
         rankSecond.time = prize(p);
       } else if (i == 2 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankThird.name = p.username;
+        rankThird.name = p.nickname;
         rankThird.time = prize(p);
       }
 
@@ -148,13 +148,13 @@ function Datedd4({ category }) {
     pposts.map((p, i) => {
       // console.log(p.username)
       if (i == 0 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankFirst.name = p.username;
+        rankFirst.name = p.nickname;
         rankFirst.time = prize(p);
       } else if (i == 1 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankSecond.name = p.username;
+        rankSecond.name = p.nickname;
         rankSecond.time = prize(p);
       } else if (i == 2 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankThird.name = p.username;
+        rankThird.name = p.nickname;
         rankThird.time = prize(p);
       }
     });

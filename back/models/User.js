@@ -30,14 +30,18 @@ const UserSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    email: {
+    nickname: {
       type: String,
       required: true,
-      //   unique: true,
+      unique: true,
     },
     password: {
       type: String,
       required: true,
+    },
+    motto: {
+      type: String,
+      default: "열심히 하겠습니다",
     },
     // profilePic: {
     //     type: String,
