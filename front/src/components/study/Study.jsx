@@ -46,6 +46,7 @@ function Study() {
   //   console.log(name);
   const [check, setCheck] = useState(true);
   const [check2, setCheck2] = useState(true);
+  const [check3, setCheck3] = useState(false);
   const [finish, setFinish] = useState(false);
   const [time, setTime] = useState(0);
   const [id, setId] = useState("");
@@ -179,6 +180,9 @@ function Study() {
           username: name,
           id: id,
           time: top,
+          hour: hour,
+          minute: minute,
+          second: second + 1,
         });
         // const res2 = await axiosInstance.put("/back/time/submit2", {
         const res2 = await axios.put(
@@ -188,7 +192,7 @@ function Study() {
             id: weekid,
             hour: hour,
             minute: minute,
-            second: second,
+            second: second + 1,
           }
         );
         // const res3 = await axiosInstance.put("/back/time/submit3", {
@@ -199,7 +203,7 @@ function Study() {
             id: totalid,
             hour: hour,
             minute: minute,
-            second: second,
+            second: second + 1,
           }
         );
 
@@ -211,7 +215,7 @@ function Study() {
             id: monthid,
             hour: hour,
             minute: minute,
-            second: second,
+            second: second + 1,
           }
         );
         //   console.log(res);
@@ -231,7 +235,10 @@ function Study() {
         const res = await axios.put("http://localhost:3000/back/time/submit", {
           username: name,
           id: id,
-          time: after12,
+          time: top,
+          hour: hour,
+          minute: minute,
+          second: second + 1,
         });
         //   console.log(res);
         // window.location.href = "/";
@@ -243,7 +250,7 @@ function Study() {
             id: weekid,
             hour: hour,
             minute: minute,
-            second: second,
+            second: second + 1,
           }
         );
 
@@ -255,7 +262,7 @@ function Study() {
             id: totalid,
             hour: hour,
             minute: minute,
-            second: second,
+            second: second + 1,
           }
         );
 
@@ -267,7 +274,7 @@ function Study() {
             id: monthid,
             hour: hour,
             minute: minute,
-            second: second,
+            second: second + 1,
           }
         );
         window.location.href = "/";
@@ -280,6 +287,7 @@ function Study() {
     // setHelp(1);
     // console.log("help")
     setCheck(!check);
+    setCheck3(!check3);
     // console.log(check);
     // console.log("total" + total_studied);
     const modelURL = URL + "model.json";
@@ -401,7 +409,7 @@ function Study() {
             ) : (
               <div></div>
             )}
-            {check2 ? (
+            {check2 && check3 ? (
               <button type="button" onClick={Submit}>
                 기록저장
               </button>

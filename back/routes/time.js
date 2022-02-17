@@ -20,11 +20,26 @@ function getCurrentDate() {
   );
 }
 
+// router.post("/", async (req, res) => {
+//   var username = req.body.username;
+//   // console.log(req.body);
+//   // console.log("plz");
+
+//   try {
+//     var time;
+//     if (username) {
+//       time = await Time.find({ username });
+//     }
+//     res.status(200).json(time);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 router.post("/", async (req, res) => {
   var username = req.body.username;
   // console.log(req.body);
   // console.log("plz");
-
   try {
     var time;
     if (username) {
@@ -98,18 +113,66 @@ router.post("/month", async (req, res) => {
   }
 });
 
+// router.put("/submit", async (req, res) => {
+//   try {
+//     // console.log(req.body.id)
+//     // console.log(getCurrentDate())
+//     // console.log(new Date())
+//     const time = await Time.findById(req.body.id);
+//     if (time.username === req.body.username) {
+//       try {
+//         const updatedTime = await Time.findByIdAndUpdate(
+//           req.body.id,
+//           {
+//             $set: { time: req.body.time },
+//           },
+//           { new: true }
+//         );
+//         res.status(200).json(updatedTime);
+//       } catch (err) {
+//         res.status(500).json(err);
+//       }
+//     } else {
+//       res.status(401).json("You can update only your post!");
+//     }
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 router.put("/submit", async (req, res) => {
   try {
-    // console.log(req.body.id)
+    // console.log("dad" + req.body.id);
     // console.log(getCurrentDate())
     // console.log(new Date())
     const time = await Time.findById(req.body.id);
+    // console.log(weektime);
     if (time.username === req.body.username) {
       try {
+        goodH = time.hour + req.body.hour;
+        goodM = time.minute + req.body.minute;
+        goodS = time.second + req.body.second;
+
+        if (goodM >= 60) {
+          let a = parseInt(goodM / 60);
+          goodH += a;
+          goodM -= a * 60;
+        }
+
+        if (goodS >= 60) {
+          let a = parseInt(goodS / 60);
+          goodM += a;
+          goodS -= a * 60;
+        }
         const updatedTime = await Time.findByIdAndUpdate(
           req.body.id,
           {
-            $set: { time: req.body.time },
+            $set: {
+              time: req.body.time,
+              hour: goodH,
+              minute: goodM,
+              second: goodS,
+            },
           },
           { new: true }
         );
@@ -280,9 +343,20 @@ router.put("/submit4", async (req, res) => {
   }
 });
 
+// router.get("/", async (req, res) => {
+//   try {
+//     // console.log("www");
+//     let posts;
+//     posts = await Time.find();
+//     res.status(200).json(posts);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 router.get("/", async (req, res) => {
   try {
-    // console.log("www");
+    // console.log("DADADADAVVVV");
     let posts;
     posts = await Time.find();
     res.status(200).json(posts);

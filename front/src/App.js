@@ -7,13 +7,14 @@ import TopBarStudy from "./components/topBarStudy/TopBarStudy";
 import TotalDate from "./components/date/TotalDate";
 import WeekDate from "./components/date/WeekDate";
 import MonthDate from "./components/date/MonthDate";
+import NewDate from "./components/date/NewDate";
 function App() {
   return (
     <Router>
       <Switch>
         <Route exact path="/">
           <TopBar category={"일간"}></TopBar>
-          <Date category={"일간"}></Date>
+          <NewDate category={"일간"}></NewDate>
         </Route>
         <Route path="/su">
           <TopBar category={"주간"}></TopBar>
