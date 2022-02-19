@@ -81,8 +81,8 @@ function Datedd4({ category }) {
     const fetchPosts = async () => {
       console.log("2")
       console.log("DADADA");
-      // const res = await axiosInstance.get("/back/time/total")
-      const res = await axios.get("http://localhost:3000/back/time/");
+      const res = await axiosInstance.get("/back/time/")
+      // const res = await axios.get("http://localhost:3000/back/time/");
       console.log(res);
       console.log("HHH");
       setPosts(res.data);
@@ -94,21 +94,23 @@ function Datedd4({ category }) {
       // status: 200
       // statusText: "OK"
       // [[Prototype]]: Object
-      if (
-        new Date() >= new Date("02/20/2022 23:59:00") &&
-        new Date() < new Date("02/21/2022 00:01:00")
-      ) {
-        // const res = await axiosInstance.put("/back/time/submit", {
-        const res = await axios.post("http://localhost:3000/back/time/reset");
-      }
+      // if (
+      //   new Date() >= new Date("02/20/2022 23:59:00") &&
+      //   new Date() < new Date("02/21/2022 00:01:00")
+      // ) {
+      //   const res = await axiosInstance.post("/back/time/reset")
+      //   // const res = await axios.post("http://localhost:3000/back/time/reset");
+      // }
       // console.log(posts);
-
+      // console.log("WW")
       setLoad(!load)
       // console.log(myRank)
     };
     fetchPosts();
   }, []);
+
   if (load) {
+
     pposts = posts;
     pposts = pposts.sort(function (a, b) {
       if (b.hour == a.hour) {

@@ -13,7 +13,8 @@ function Mypage() {
     // console.log(name)
     const handleUpdate = async () => {
         try {
-            await axios.put(`http://localhost:3000/back/time/motto`, {
+            await axiosInstance.put("/back/time/motto", {
+                // await axios.put(`http://localhost:3000/back/time/motto`, {
                 username: name,
                 nickname: nickname,
                 motto: motto,
@@ -26,8 +27,8 @@ function Mypage() {
     }
     useEffect(() => {
         const fetchPosts = async () => {
-            // const res = await axiosInstance.get("/back/time/")
-            const res = await axios.post("http://localhost:3000/back/time/motto", {
+            const res = await axiosInstance.post("/back/time/motto", {
+                // const res = await axios.post("http://localhost:3000/back/time/motto", {
                 username: name,
             });
             console.log(res);
@@ -45,13 +46,13 @@ function Mypage() {
             // statusText: "OK"
             // [[Prototype]]: Object
 
-            if (
-                new Date() >= new Date("02/20/2022 23:59:00") &&
-                new Date() < new Date("02/21/2022 00:01:00")
-            ) {
-                // const res = await axiosInstance.put("/back/time/submit", {
-                const res = await axios.post("http://localhost:3000/back/time/reset");
-            }
+            // if (
+            //     new Date() >= new Date("02/20/2022 23:59:00") &&
+            //     new Date() < new Date("02/21/2022 00:01:00")
+            // ) {
+            //     const res = await axiosInstance.post("/back/time/reset")
+            //     // const res = await axios.post("http://localhost:3000/back/time/reset");
+            // }
             setLoad(!load)
         };
         fetchPosts();
