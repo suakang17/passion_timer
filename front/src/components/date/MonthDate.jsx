@@ -8,10 +8,34 @@ import { Link } from "react-router-dom";
 import RunTime2 from "../studentTime/RunTime2";
 import { axiosInstance } from "../../config";
 import $ from "jquery";
-import {} from "jquery.cookie";
+import { } from "jquery.cookie";
 import axios from "axios";
+import BottomBar from "../bottomBar/BottomBar";
 
-function Datedd4({ category }) {
+var now = new Date();
+//   var hour = now.getHours();
+let month = now.getMonth() + 1;
+let day = now.getDate();
+
+var rankFirst = {
+  name: "undefinded",
+  time: "undefinded",
+};
+var rankSecond = {
+  name: "undefinded",
+  time: "undefinded",
+};
+var rankThird = {
+  name: "undefinded",
+  time: "undefinded",
+};
+var objectLength = 0
+
+var myRank = 0;
+var name = $.cookie("login_cookie");
+var pposts = [];
+function Datedd2({ category }) {
+  console.log("1")
   function prize(p) {
     let hours = p.hour;
     let minutes = p.minute;
@@ -40,34 +64,22 @@ function Datedd4({ category }) {
   //     return new Date(Date.UTC(year, month, today, hours, minutes, seconds, milliseconds));
   // }
 
-  console.log(category);
+  // console.log(category);
   //   console.log(new Date().toDateString());
-  var now = new Date();
-  //   var hour = now.getHours();
-  let month = now.getMonth() + 1;
-  let day = now.getDate();
+
   const [posts, setPosts] = useState([]);
+  const [load, setLoad] = useState(false);
   // const { search } = useLocation();
   // console.log(search)
   // console.log(location)
   // http://localhost:3000/posts/?user=kdyUpdated
   // {pathname: '/posts/', search: '?user=kdyUpdated', hash: '', state: undefined}
 
-  var rankFirst = {
-    name: "undefinded",
-    time: "undefinded",
-  };
-  var rankSecond = {
-    name: "undefinded",
-    time: "undefinded",
-  };
-  var rankThird = {
-    name: "undefinded",
-    time: "undefinded",
-  };
-  console.log("DADADA");
+
+  // console.log("DADADA");
   useEffect(() => {
     const fetchPosts = async () => {
+      console.log("2")
       console.log("DADADA");
       // const res = await axiosInstance.get("/back/time/total")
       const res = await axios.get("http://localhost:3000/back/time/month");
@@ -89,81 +101,86 @@ function Datedd4({ category }) {
         // const res = await axiosInstance.put("/back/time/submit", {
         const res = await axios.post("http://localhost:3000/back/time/reset");
       }
+      // console.log(posts);
+
+      setLoad(!load)
+      // console.log(myRank)
     };
     fetchPosts();
   }, []);
-
-  console.log(posts);
-  let pposts = posts;
-  pposts = pposts.sort(function (a, b) {
-    if (b.hour == a.hour) {
-      if (b.minute == a.minute) {
-        return b.second - a.second;
+  if (load) {
+    pposts = posts;
+    pposts = pposts.sort(function (a, b) {
+      if (b.hour == a.hour) {
+        if (b.minute == a.minute) {
+          return b.second - a.second;
+        }
+        return b.minute - a.minute;
       }
-      return b.minute - a.minute;
+      return b.hour - a.hour;
+    });
+    // console.log(pposts);
+    // pposts.map((p) => console.log(p));
+    objectLength = Object.keys(pposts).length;
+    // console.log("leng " + objectLength)
+
+    // pposts.map((p, i) => {
+    //     // console.log(typeof getCurrentDate())
+    //     // console.log(JSON.stringify(getCurrentDate()))
+    //     // console.log(new Date(p.updatedAt).getTime() + (9 * 3600000))
+    //     if (
+    //         new Date(p.updatedAt).toDateString() !=
+    //         new Date().toDateString()
+    //     ) {
+    //         p.time = 0
+    //     }
+    // })
+
+    console.log("3")
+    // 자신의 현재랭킹
+
+    console.log(name);
+    if (name) {
+      // consolThird("have")
+      pposts.map((p, i) => {
+        console.log(p);
+        if (i == 0 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
+          rankFirst.name = p.nickname;
+          rankFirst.time = prize(p);
+        } else if (i == 1 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
+          rankSecond.name = p.nickname;
+          rankSecond.time = prize(p);
+        } else if (i == 2 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
+          rankThird.name = p.nickname;
+          rankThird.time = prize(p);
+        }
+
+        if (p.username === name) {
+          myRank = i + 1;
+        }
+      });
+    } else {
+      pposts.map((p, i) => {
+        // console.log(p.username)
+        if (i == 0 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
+          rankFirst.name = p.nickname;
+          rankFirst.time = prize(p);
+        } else if (i == 1 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
+          rankSecond.name = p.nickname;
+          rankSecond.time = prize(p);
+        } else if (i == 2 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
+          rankThird.name = p.nickname;
+          rankThird.time = prize(p);
+        }
+      });
     }
-    return b.hour - a.hour;
-  });
-  // console.log(pposts);
-  // pposts.map((p) => console.log(p));
-  var objectLength = Object.keys(pposts).length;
-  // console.log("leng " + objectLength)
-
-  // pposts.map((p, i) => {
-  //     // console.log(typeof getCurrentDate())
-  //     // console.log(JSON.stringify(getCurrentDate()))
-  //     // console.log(new Date(p.updatedAt).getTime() + (9 * 3600000))
-  //     if (
-  //         new Date(p.updatedAt).toDateString() !=
-  //         new Date().toDateString()
-  //     ) {
-  //         p.time = 0
-  //     }
-  // })
-
-  // 자신의 현재랭킹
-  var myRank = 0;
-  var name = $.cookie("login_cookie");
-  console.log(name);
-  if (name) {
-    // consolThird("have")
-    pposts.map((p, i) => {
-      // console.log(p.username)
-      if (i == 0 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankFirst.name = p.username;
-        rankFirst.time = prize(p);
-      } else if (i == 1 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankSecond.name = p.username;
-        rankSecond.time = prize(p);
-      } else if (i == 2 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankThird.name = p.username;
-        rankThird.time = prize(p);
-      }
-
-      if (p.username === name) {
-        myRank = i + 1;
-      }
-    });
-  } else {
-    pposts.map((p, i) => {
-      // console.log(p.username)
-      if (i == 0 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankFirst.name = p.username;
-        rankFirst.time = prize(p);
-      } else if (i == 1 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankSecond.name = p.username;
-        rankSecond.time = prize(p);
-      } else if (i == 2 && (p.hour != 0 || p.minute != 0 || p.second != 0)) {
-        rankThird.name = p.username;
-        rankThird.time = prize(p);
-      }
-    });
   }
-  // console.log(myRank)
+
 
   return (
     <>
-      <div className="date">
+      {console.log("4")}
+      {load ? (<div><div className="date">
         <div className="dateLeft"></div>
         <div className="dateCenter">
           <div className="dayday">
@@ -173,56 +190,58 @@ function Datedd4({ category }) {
         </div>
         <div className="dateRight"></div>
       </div>
-      <div className="dategrayBar"></div>
-      <div className="top3">월간 Top3</div>
-      <div className="price">
-        <div className="priceLeft"></div>
-        <div className="priceCenter">
-          <div className="set">
-            <img className="priceImg" src={Second} alt="" />
-            <p className="winner">{rankSecond.name}</p>
-            <p className="winnerTime">{rankSecond.time}</p>
+        <div className="dategrayBar"></div>
+        <div className="top3">월간 Top3</div>
+        <div className="price">
+          <div className="priceLeft"></div>
+          <div className="priceCenter">
+            <div className="set">
+              <img className="priceImg" src={Second} alt="" />
+              <p className="winner">{rankSecond.name}</p>
+              <p className="winnerTime">{rankSecond.time}</p>
+            </div>
+            <div className="set">
+              <img className="priceImg" src={First} alt="" />
+              <p className="winner">{rankFirst.name}</p>
+              <p className="winnerTime">{rankFirst.time}</p>
+            </div>
+            <div className="set">
+              <img className="priceImg" src={Third} alt="" />
+              <p className="winner">{rankThird.name}</p>
+              <p className="winnerTime">{rankThird.time}</p>
+            </div>
           </div>
-          <div className="set">
-            <img className="priceImg" src={First} alt="" />
-            <p className="winner">{rankFirst.name}</p>
-            <p className="winnerTime">{rankFirst.time}</p>
-          </div>
-          <div className="set">
-            <img className="priceImg" src={Third} alt="" />
-            <p className="winner">{rankThird.name}</p>
-            <p className="winnerTime">{rankThird.time}</p>
-          </div>
+          <div className="priceRight"></div>
         </div>
-        <div className="priceRight"></div>
-      </div>
-      <div className="dategrayBar grayBarhh"></div>
-      <div className="study">
-        <div className="studyLeft">
-          {/* <span>공부중</span>
+        <div className="dategrayBar grayBarhh"></div>
+        <div className="study">
+          <div className="studyLeft">
+            {/* <span>공부중</span>
           <span>1,607</span>
           <span>명</span> */}
-          <span>전체</span>
-          <span>{objectLength}</span>
-          <span>명</span>
+            <span>전체</span>
+            <span>{objectLength}</span>
+            <span>명</span>
+          </div>
+          <div className="studyCenter"></div>
+          <div className="studyRight"></div>
         </div>
-        <div className="studyCenter"></div>
-        <div className="studyRight"></div>
-      </div>
-      <div className="study">
-        <div className="studyLeft studyLeft2">
-          <span>나의 순위</span>
-          <span>{myRank}</span>
-          <span>등</span>
-          {/* <span>상위</span>
+        <div className="study">
+          <div className="studyLeft studyLeft2">
+            <span>나의 순위</span>
+            <span>{myRank}</span>
+            <span>등</span>
+            {/* <span>상위</span>
           <span>0%</span> */}
+          </div>
+          <div className="studyCenter"></div>
+          <div className="studyRight"></div>
         </div>
-        <div className="studyCenter"></div>
-        <div className="studyRight"></div>
-      </div>
 
-      <RunTime2 data={pposts}></RunTime2>
-      <div className="trick"></div>
+        <RunTime2 data={pposts}></RunTime2>
+        <div className="trick"></div>
+        <BottomBar category={category}></BottomBar></div>) : (<div></div>)}
+
       {/* <div className="studyStatus">
         <div className="studyStatusLeft">
           <p className="writeIcon">1</p>
@@ -389,72 +408,9 @@ function Datedd4({ category }) {
         </div>
         <div className="studyStatusRight"></div>
       </div> */}
-      <div className="bottom">
-        <div className="bottomLeft"></div>
-        <div className="bottomCenter">
-          {category === "일간" ? (
-            <Link to="/" className="link">
-              <i className="bottomIcon1 far fa-grin-alt dada "></i>
-              <p className="bottomText dada">일간</p>
-            </Link>
-          ) : (
-            <Link to="/" className="link">
-              <i className="bottomIcon1 far fa-grin-alt "></i>
-              <p className="bottomText">일간</p>
-            </Link>
-          )}
-          {category === "주간" ? (
-            <Link to="/su" className="link">
-              <i className="bottomIcon1 fas fa-pencil-alt  dada"></i>
-              <p className="bottomText dada">주간</p>
-            </Link>
-          ) : (
-            <Link to="/su" className="link">
-              <i className="bottomIcon1 fas fa-pencil-alt  "></i>
-              <p className="bottomText">주간</p>
-            </Link>
-          )}
 
-          {category === "월간" ? (
-            <Link to="/gong" className="link">
-              <i className="bottomIcon1 fas fa-user-tie dada "></i>
-              <p className="bottomText dada">월간</p>
-            </Link>
-          ) : (
-            <Link to="/gong" className="link">
-              <i className="bottomIcon1 fas fa-user-tie "></i>
-              <p className="bottomText ">월간</p>
-            </Link>
-          )}
-
-          {category === "누적" ? (
-            <Link to="/ja" className="link">
-              <i className="bottomIcon2 far fa-credit-card dada"></i>
-              <p className="bottomText dada">누적랭킹</p>
-            </Link>
-          ) : (
-            <Link to="/ja" className="link">
-              <i className="bottomIcon2 far fa-credit-card "></i>
-              <p className="bottomText">누적랭킹</p>
-            </Link>
-          )}
-
-          {/* {category === "대학생" ? (
-            <Link to="/dae" className="link">
-              <i className="bottomIcon2 fas fa-university dada"></i>
-              <p className="bottomText dada">대학생</p>
-            </Link>
-          ) : (
-            <Link to="/dae" className="link">
-              <i className="bottomIcon2 fas fa-university "></i>
-              <p className="bottomText">대학생</p>
-            </Link>
-          )} */}
-        </div>
-        <div className="bottomRight"></div>
-      </div>
     </>
   );
 }
 
-export default Datedd4;
+export default Datedd2;

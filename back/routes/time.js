@@ -36,6 +36,21 @@ function getCurrentDate() {
 //   }
 // });
 
+router.post("/motto", async (req, res) => {
+  var username = req.body.username;
+  // console.log(req.body);
+  // console.log("plz");
+  try {
+    var user;
+    if (username) {
+      user = await User.find({ username });
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.post("/", async (req, res) => {
   var username = req.body.username;
   // console.log(req.body);
@@ -343,6 +358,71 @@ router.put("/submit4", async (req, res) => {
   }
 });
 
+router.put("/motto", async (req, res) => {
+  try {
+    // const user = await User.findById(req.body.id);
+
+    try {
+      const user = await User.findOneAndUpdate(
+        { username: req.body.username },
+        {
+          $set: {
+            nickname: req.body.nickname,
+            motto: req.body.motto
+          },
+        },
+        { new: true }
+      );
+      const time = await Time.findOneAndUpdate(
+        { username: req.body.username },
+        {
+          $set: {
+            nickname: req.body.nickname,
+            motto: req.body.motto
+          },
+        },
+        { new: true }
+      );
+      const weektime = await WeekTime.findOneAndUpdate(
+        { username: req.body.username },
+        {
+          $set: {
+            nickname: req.body.nickname,
+            motto: req.body.motto
+          },
+        },
+        { new: true }
+      );
+      const monthtime = await MonthTime.findOneAndUpdate(
+        { username: req.body.username },
+        {
+          $set: {
+            nickname: req.body.nickname,
+            motto: req.body.motto
+          },
+        },
+        { new: true }
+      );
+      const total = await TotalTime.findOneAndUpdate(
+        { username: req.body.username },
+        {
+          $set: {
+            nickname: req.body.nickname,
+            motto: req.body.motto
+          },
+        },
+        { new: true }
+      );
+      res.status(200).json(user);
+    } catch (err) {
+      console.log(err)
+      res.status(500).json(err);
+    }
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 // router.get("/", async (req, res) => {
 //   try {
 //     // console.log("www");

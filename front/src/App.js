@@ -8,6 +8,9 @@ import TotalDate from "./components/date/TotalDate";
 import WeekDate from "./components/date/WeekDate";
 import MonthDate from "./components/date/MonthDate";
 import NewDate from "./components/date/NewDate";
+import Mypage from "./components/mypage/Mypage";
+import BottomBar from "./components/bottomBar/BottomBar";
+import TopBarMy from "./components/topBar/TopBarMy";
 function App() {
   return (
     <Router>
@@ -28,6 +31,12 @@ function App() {
           <TopBar category={"누적"}></TopBar>
           <TotalDate category={"누적"}></TotalDate>
         </Route>
+        <Route path="/my">
+          <TopBarMy></TopBarMy>
+          <Mypage ></Mypage>
+          <BottomBar category={"마이페이지"}></BottomBar>
+        </Route>
+
         {/* <Route path="/dae">
           <TopBar category={"대학생"}></TopBar>
           <Date category={"대학생"}></Date>

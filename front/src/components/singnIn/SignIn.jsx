@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import { axiosInstance } from "../../config";
 import $ from "jquery";
-import {} from "jquery.cookie";
+import { } from "jquery.cookie";
 
 function SignIn() {
   const history = useHistory(); //페이지가 이동 되어서 useState 값을 저장하기 위해서 사용
@@ -96,7 +96,7 @@ function SignIn() {
         console.log($.cookie("login_cookie"));
         window.location.href = "/";
       }
-    } catch (err) {}
+    } catch (err) { }
 
     // const user = {
     //     headers,
