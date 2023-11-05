@@ -1,4 +1,4 @@
-# Passion Timer
+# [Passion Timer](https://passion-timer.herokuapp.com/)
 ##### 기존 공부 시간 측정 앱이나 사이트의 허위 기록이나, 측정 시작과 중지를 잊어 정확한 시간을 측정하지 못하는 불편점을 개선하였다.
 ## 기능
 - 회원가입, 로그인을 통해 사이트를 이용할 수 있다.
